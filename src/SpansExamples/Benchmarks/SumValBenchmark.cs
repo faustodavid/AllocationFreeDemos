@@ -8,6 +8,7 @@ namespace SpansExamples.Benchmarks
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MarkdownExporterAttribute.GitHub]
     public class SumValBenchmark
     {
         [Params(1, 100, 1000)]
