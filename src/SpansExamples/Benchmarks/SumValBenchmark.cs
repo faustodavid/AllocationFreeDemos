@@ -32,7 +32,7 @@ namespace SpansExamples.Benchmarks
             return LinqCommaParser.SumVal(content);
         }
 
-        public IEnumerable<object> Data()
+        public IEnumerable<string> Data()
         {
             yield return string.Join(',', Enumerable.Range(0, 1));
             yield return string.Join(',', Enumerable.Range(0, 100));
