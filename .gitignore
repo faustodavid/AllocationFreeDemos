@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs
+/src/.vs/AllocationFreeDemos/DesignTimeBuild
+/src/.vs/AllocationFreeDemos/v16/Server/sqlite3
+/src/SpansExamples/obj/Release/netcoreapp3.0
+/src/SpansExamples/obj
+/src/SpansExamples/bin/Release/netcoreapp3.0
+/src/SpansExamples.Tests/bin/Release/netcoreapp3.0
+/src/SpansExamples.Tests/obj/Release/netcoreapp3.0
+/src/SpansExamples.Tests/obj
