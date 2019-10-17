@@ -20,16 +20,16 @@ Intel Core i7-8750H CPU 2.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical 
 
 
 ```
-|                           Method | Params |         Mean |       Error |        StdDev |       Median | Ratio | RatioSD |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
-|--------------------------------- |------- |-------------:|------------:|--------------:|-------------:|------:|--------:|-------:|-------:|------:|----------:|
-| AllocationFreeCommaParser_SumVal |      1 |     29.89 ns |   0.6256 ns |     0.8351 ns |     30.10 ns |  0.54 |    0.03 |      - |      - |     - |         - |
-|    TraditionalCommaParser_SumVal |      1 |     55.27 ns |   1.1235 ns |     1.8142 ns |     54.33 ns |  1.00 |    0.00 | 0.0068 |      - |     - |      32 B |
-|           LinqCommaParser_SumVal |      1 |     83.42 ns |   1.6722 ns |     2.3982 ns |     82.26 ns |  1.51 |    0.06 | 0.0136 |      - |     - |      64 B |
-|                                  |        |              |             |               |              |       |         |        |        |       |           |
-| AllocationFreeCommaParser_SumVal |    100 |  1,592.86 ns |  31.7862 ns |    71.7468 ns |  1,575.90 ns |  0.48 |    0.02 |      - |      - |     - |         - |
-|    TraditionalCommaParser_SumVal |    100 |  3,222.01 ns |  64.1432 ns |    83.4042 ns |  3,186.12 ns |  1.00 |    0.00 | 0.8354 | 0.0114 |     - |    3944 B |
-|           LinqCommaParser_SumVal |    100 |  4,202.27 ns |  85.7287 ns |    75.9962 ns |  4,198.67 ns |  1.31 |    0.04 | 0.8392 | 0.0076 |     - |    3976 B |
-|                                  |        |              |             |               |              |       |         |        |        |       |           |
-| AllocationFreeCommaParser_SumVal |   1000 | 16,021.36 ns | 244.0295 ns |   216.3258 ns | 16,073.88 ns |  0.48 |    0.01 |      - |      - |     - |         - |
-|    TraditionalCommaParser_SumVal |   1000 | 33,702.45 ns | 468.8789 ns |   415.6489 ns | 33,780.81 ns |  1.00 |    0.00 | 8.4229 | 1.0376 |     - |   39944 B |
-|           LinqCommaParser_SumVal |   1000 | 44,353.86 ns | 882.1225 ns | 1,879.8749 ns | 44,377.95 ns |  1.31 |    0.04 | 8.4839 | 1.0376 |     - |   39976 B |
+|                           Method |                content |         Mean |         Error |        StdDev |       Median | Ratio | RatioSD |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
+|--------------------------------- |----------------------- |-------------:|--------------:|--------------:|-------------:|------:|--------:|-------:|-------:|------:|----------:|
+| AllocationFreeCommaParser_SumVal |                      0 |     21.11 ns |     0.4402 ns |     0.4118 ns |     21.26 ns |  0.45 |    0.02 |      - |      - |     - |         - |
+|    TraditionalCommaParser_SumVal |                      0 |     47.30 ns |     0.9632 ns |     1.7121 ns |     46.50 ns |  1.00 |    0.00 | 0.0068 |      - |     - |      32 B |
+|           LinqCommaParser_SumVal |                      0 |     75.41 ns |     1.5203 ns |     2.5816 ns |     76.19 ns |  1.59 |    0.09 | 0.0136 |      - |     - |      64 B |
+|                                  |                        |              |               |               |              |       |         |        |        |       |           |
+| AllocationFreeCommaParser_SumVal |  0,1,2(...)98,99 [289] |  1,628.34 ns |    32.4146 ns |    71.1508 ns |  1,635.89 ns |  0.50 |    0.03 |      - |      - |     - |         - |
+|    TraditionalCommaParser_SumVal |  0,1,2(...)98,99 [289] |  3,203.87 ns |    61.0188 ns |    57.0770 ns |  3,183.66 ns |  1.00 |    0.00 | 0.8354 | 0.0114 |     - |    3944 B |
+|           LinqCommaParser_SumVal |  0,1,2(...)98,99 [289] |  4,151.62 ns |    92.5658 ns |    86.5861 ns |  4,136.03 ns |  1.30 |    0.03 | 0.8392 | 0.0076 |     - |    3976 B |
+|                                  |                        |              |               |               |              |       |         |        |        |       |           |
+| AllocationFreeCommaParser_SumVal | 0,1,2(...)8,999 [3889] | 16,101.32 ns |   315.7897 ns |   432.2565 ns | 16,299.01 ns |  0.48 |    0.03 |      - |      - |     - |         - |
+|    TraditionalCommaParser_SumVal | 0,1,2(...)8,999 [3889] | 33,068.29 ns |   656.0960 ns | 1,369.5167 ns | 32,656.81 ns |  1.00 |    0.00 | 8.4229 | 1.0376 |     - |   39944 B |
+|           LinqCommaParser_SumVal | 0,1,2(...)8,999 [3889] | 42,705.93 ns | 1,598.8495 ns | 1,641.9007 ns | 41,923.92 ns |  1.27 |    0.07 | 8.4839 | 0.4883 |     - |   39976 B |

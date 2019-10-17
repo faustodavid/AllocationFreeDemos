@@ -11,34 +11,32 @@ namespace SpansExamples.Benchmarks
     [MarkdownExporterAttribute.GitHub]
     public class SumValBenchmark
     {
-        [Params(1, 100, 1000)]
-        public int Params;
-
-        private readonly Dictionary<int, string> values = new Dictionary<int, string>(3);
-
-        [GlobalSetup]
-        public void GlobalSetup()
-        {
-            var value = string.Join(',', Enumerable.Range(0, Params));
-            values.Add(Params, value);
-        }
-
         [Benchmark(Baseline = true)]
-        public int TraditionalCommaParser_SumVal()
+        [ArgumentsSource(nameof(Data))]
+        public int TraditionalCommaParser_SumVal(string content)
         {
-            return TraditionalCommaParser.SumVal(values[Params]);
+            return TraditionalCommaParser.SumVal(content);
         }
 
         [Benchmark]
-        public int AllocationFreeCommaParser_SumVal()
+        [ArgumentsSource(nameof(Data))]
+        public int AllocationFreeCommaParser_SumVal(string content)
         {
-            return AllocationFreeCommaParser.SumVal(values[Params]);
+            return AllocationFreeCommaParser.SumVal(content);
         }
 
         [Benchmark]
-        public int LinqCommaParser_SumVal()
+        [ArgumentsSource(nameof(Data))]
+        public int LinqCommaParser_SumVal(string content)
         {
-            return LinqCommaParser.SumVal(values[Params]);
+            return LinqCommaParser.SumVal(content);
+        }
+
+        public IEnumerable<object> Data()
+        {
+            yield return string.Join(',', Enumerable.Range(0, 1));
+            yield return string.Join(',', Enumerable.Range(0, 100));
+            yield return string.Join(',', Enumerable.Range(0, 1000));
         }
     }
 }
