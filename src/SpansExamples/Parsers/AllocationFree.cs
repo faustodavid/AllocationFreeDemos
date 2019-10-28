@@ -2,9 +2,9 @@
 
 namespace SpansExamples.Parsers
 {
-    public class AllocationFreeCommaParser
+    public class AllocationFree
     {
-        private AllocationFreeCommaParser()
+        private AllocationFree()
         {
         }
 
@@ -15,7 +15,7 @@ namespace SpansExamples.Parsers
         /// </summary>
         /// <param name="content">Comma separated integers</param>
         /// <returns>Sum of all comma separated integers</returns>
-        public static int SumVal(ReadOnlySpan<char> content)
+        public static int SumCommaSeparatedValues(ReadOnlySpan<char> content)
         {
             if (content == null || content.Length == 0)
             {

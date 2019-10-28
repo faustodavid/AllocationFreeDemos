@@ -1,12 +1,12 @@
 ﻿namespace SpansExamples.Parsers
 {
-    public class TraditionalCommaParser
+    public class TraditionalForeach
     {
-        private TraditionalCommaParser()
+        private TraditionalForeach()
         {
         }
 
-        public static int SumVal(string value)
+        public static int SumCommaSeparatedValues(string value)
         {
             if (string.IsNullOrEmpty(value))
             {

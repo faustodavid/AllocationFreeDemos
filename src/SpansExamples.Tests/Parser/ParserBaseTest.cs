@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace SpansExamples.Tests
+namespace SpansExamples.Tests.Parser
 {
     public abstract class ParserBaseTest
     {
@@ -11,6 +11,6 @@ namespace SpansExamples.Tests
         [InlineData("", 0)]
         [InlineData(null, 0)]
         [Theory]
-        public abstract void SumValBenchmark(string valueToParse, int expectedResult);
+        public abstract void SumCommaSeparatedValues(string valueToParse, int expectedResult);
     }
 }

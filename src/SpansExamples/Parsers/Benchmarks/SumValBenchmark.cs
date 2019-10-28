@@ -2,9 +2,8 @@
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using SpansExamples.Parsers;
 
-namespace SpansExamples.Benchmarks
+namespace SpansExamples.Parsers.Benchmarks
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
@@ -13,23 +12,23 @@ namespace SpansExamples.Benchmarks
     {
         [Benchmark(Baseline = true)]
         [ArgumentsSource(nameof(Data))]
-        public int TraditionalCommaParser_SumVal(string content)
+        public int Traditional_SumCommaSeparatedValues(string content)
         {
-            return TraditionalCommaParser.SumVal(content);
+            return TraditionalForeach.SumCommaSeparatedValues(content);
         }
 
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
-        public int AllocationFreeCommaParser_SumVal(string content)
+        public int AllocationFree_SumCommaSeparatedValues(string content)
         {
-            return AllocationFreeCommaParser.SumVal(content);
+            return AllocationFree.SumCommaSeparatedValues(content);
         }
 
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
-        public int LinqCommaParser_SumVal(string content)
+        public int Linq_SumCommaSeparatedValues(string content)
         {
-            return LinqCommaParser.SumVal(content);
+            return Linq.SumCommaSeparatedValues(content);
         }
 
         public IEnumerable<string> Data()

@@ -11,3 +11,6 @@
 /src/SpansExamples.Tests/bin/Release/netcoreapp3.0
 /src/SpansExamples.Tests/obj/Release/netcoreapp3.0
 /src/SpansExamples.Tests/obj
+/src/.vs/AllocationFreeDemos/v16/TestStore/0
+/src/SpansExamples/bin/Debug/netcoreapp3.0
+/src/SpansExamples.Tests/bin/Debug/netcoreapp3.0
