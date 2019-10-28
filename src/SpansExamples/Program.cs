@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
-using SpansExamples.StringJoinAndConcat;
+using SpansExamples.Parsers.Benchmarks;
 using SpansExamples.StringJoinAndConcat.Benchmarks;
 
 namespace SpansExamples
@@ -8,6 +8,7 @@ namespace SpansExamples
     {
         private static void Main(string[] args)
         {
+            BenchmarkRunner.Run<SumCommaSeparatedValuesBenchmark>();
             BenchmarkRunner.Run<StringJoinAndConcatBenchmark>();
         }
     }

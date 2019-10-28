@@ -9,8 +9,8 @@ namespace SpansExamples.StringJoinAndConcat
         }
 
         /// <summary>
-        /// Equivalent to string.Concat('[', string.Join(',', array), ']')
-        /// But without overhead
+        ///     Equivalent to string.Concat('[', string.Join(',', array), ']')
+        ///     But without overhead
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
@@ -24,7 +24,7 @@ namespace SpansExamples.StringJoinAndConcat
             // is required to know in front the length of the string that we want to create
             var resultLength = 0;
 
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
                 // sum of the length of all strings plus the comma
                 // plus one extra in the last iteration

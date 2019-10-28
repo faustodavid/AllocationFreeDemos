@@ -38,7 +38,7 @@ namespace SpansExamples.StringJoinAndConcat.Benchmarks
         public string[] DuplicateString(string content, int times)
         {
             var array = new string[times];
-            for (int i = 0; i < times; i++)
+            for (var i = 0; i < times; i++)
             {
                 array[i] = content;
             }

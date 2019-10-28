@@ -8,7 +8,7 @@ namespace SpansExamples.Parsers.Benchmarks
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [MarkdownExporterAttribute.GitHub]
-    public class SumValBenchmark
+    public class SumCommaSeparatedValuesBenchmark
     {
         [Benchmark(Baseline = true)]
         [ArgumentsSource(nameof(Data))]
