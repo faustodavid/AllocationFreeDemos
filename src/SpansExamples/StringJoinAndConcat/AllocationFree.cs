@@ -4,54 +4,42 @@ namespace SpansExamples.StringJoinAndConcat
 {
     public class AllocationFree
     {
-        private AllocationFree()
-        {
-        }
-
-        /// <summary>
-        ///     Equivalent to string.Concat('[', string.Join(',', array), ']')
-        ///     But without overhead
-        /// </summary>
-        /// <param name="array"></param>
-        /// <returns></returns>
-        public static string JoinAndConcatBrackets(string[] array)
+        public static int CalculateRequiredLength(string[] array)
         {
             if (array.Length == 0)
             {
-                return string.Empty;
+                return 0;
             }
 
             // is required to know in front the length of the string that we want to create
-            var resultLength = 0;
+            var length = 0;
 
             for (var i = 0; i < array.Length; i++)
             {
                 // sum of the length of all strings plus the comma
                 // plus one extra in the last iteration
-                resultLength += array[i].Length + 1;
+                length += array[i].Length + 1;
             }
 
             // plus one for the last bracket
-            resultLength++;
+            return length + 1;
+        }
 
-            // creates a new string with a specific length and initializes it
-            // after creation by using the specified callback.
-            return string.Create(resultLength, array, (outChars, inArray) =>
+        public static void JoinAndConcatBrackets(string[] array, ref Span<char> buffer)
+        {
+            buffer[0] = '[';
+            var position = 0;
+
+            for (var i = 0; i < array.Length; i++)
             {
-                outChars[0] = '[';
+                position++;
+                ReadOnlySpan<char> current = array[i];
+                current.CopyTo(buffer.Slice(position));
+                position += current.Length;
+                buffer[position] = ',';
+            }
 
-                var position = 0;
-                for (var i = 0; i < inArray.Length; i++)
-                {
-                    position++;
-                    ReadOnlySpan<char> current = inArray[i];
-                    current.CopyTo(outChars.Slice(position));
-                    position += current.Length;
-                    outChars[position] = ',';
-                }
-
-                outChars[position] = ']';
-            });
+            buffer[position] = ']';
         }
     }
 }

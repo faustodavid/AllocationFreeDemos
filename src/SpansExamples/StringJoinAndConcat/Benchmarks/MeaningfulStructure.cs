@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpansExamples.StringJoinAndConcat
+namespace SpansExamples.StringJoinAndConcat.Benchmarks
 {
     public readonly struct MeaningfulStructure
     {

@@ -1,4 +1,5 @@
-﻿using SpansExamples.StringJoinAndConcat;
+﻿using System;
+using SpansExamples.StringJoinAndConcat;
 using Xunit;
 
 namespace SpansExamples.Tests.StringJoinAndConcat
@@ -7,9 +8,12 @@ namespace SpansExamples.Tests.StringJoinAndConcat
     {
         public override void Join(string[] array, string expectedResult)
         {
-            var actualResult = AllocationFree.JoinAndConcatBrackets(array);
+            var length = AllocationFree.CalculateRequiredLength(array);
+            Span<char> buffer = stackalloc char[length];
 
-            Assert.Equal(expectedResult, actualResult);
+            AllocationFree.JoinAndConcatBrackets(array, ref buffer);
+
+            Assert.Equal(expectedResult, buffer.ToString());
         }
     }
 }

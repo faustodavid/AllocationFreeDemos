@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Buffers;
+using System.Collections.Generic;
 using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
@@ -12,16 +14,34 @@ namespace SpansExamples.StringJoinAndConcat.Benchmarks
     {
         [Benchmark(Baseline = true)]
         [ArgumentsSource(nameof(Data))]
-        public string TraditionalStringJoin_Join(string[] content)
+        public void Traditional_JoinAndConcatBrackets(string[] content)
         {
-            return Traditional.JoinAndConcatBrackets(content);
+            Traditional.JoinAndConcatBrackets(content);
         }
 
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
-        public string AllocationFreeStringJoin_Join(string[] content)
+        public void OverheadFree_JoinAndConcatBrackets(string[] content)
         {
-            return AllocationFree.JoinAndConcatBrackets(content);
+            OverheadFree.JoinAndConcatBrackets(content);
+        }
+
+        [Benchmark]
+        [ArgumentsSource(nameof(Data))]
+        public void AllocationFree_JoinAndConcatBrackets(string[] content)
+        {
+            var length = AllocationFree.CalculateRequiredLength(content);
+            if (length > 1024)
+            {
+                var largeBuffer = ArrayPool<char>.Shared.Rent(length);
+                Span<char> bufferSpan = largeBuffer;
+                AllocationFree.JoinAndConcatBrackets(content, ref bufferSpan);
+                ArrayPool<char>.Shared.Return(largeBuffer);
+                return;
+            }
+
+            Span<char> buffer = stackalloc char[length];
+            AllocationFree.JoinAndConcatBrackets(content, ref buffer);
         }
 
         public IEnumerable<string[]> Data()
