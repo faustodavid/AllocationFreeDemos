@@ -10,7 +10,7 @@ namespace SpansExamples.StringJoinAndConcat
 
         /// <summary>
         ///     Equivalent to string.Concat('[', string.Join(',', array), ']')
-        ///     But without overhead
+        ///     But without overhead. Only allocation will be the string itself
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>

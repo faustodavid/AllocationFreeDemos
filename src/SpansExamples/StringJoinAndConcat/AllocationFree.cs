@@ -25,6 +25,13 @@ namespace SpansExamples.StringJoinAndConcat
             return length + 1;
         }
 
+      /// <summary>
+      ///     Equivalent to string.Concat('[', string.Join(',', array), ']')
+      ///     But allocation free.
+      ///     Is required that buffer has exact size of result.
+      /// </summary>
+      /// <param name="array"></param>
+      /// <param name="buffer">Operation result</param>
         public static void JoinAndConcatBrackets(string[] array, ref Span<char> buffer)
         {
             buffer[0] = '[';
