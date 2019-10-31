@@ -2,13 +2,13 @@
 
 namespace SpansExamples.Parsers
 {
-    public class LinqCommaParser
+    public class Linq
     {
-        private LinqCommaParser()
+        private Linq()
         {
         }
 
-        public static int SumVal(string value)
+        public static int SumCommaSeparatedValues(string value)
         {
             if (string.IsNullOrEmpty(value))
             {
