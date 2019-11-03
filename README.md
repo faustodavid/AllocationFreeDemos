@@ -6,7 +6,7 @@ Allocation free examples for high-performance code.
 ## String parser
 Receive a string of integers separated by commas and sum all of them.
 
-Example:
+Example
 Input: "2,4,5"
 Output: 11
 
@@ -39,6 +39,10 @@ Intel Core i7-8750H CPU 2.20GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical 
 Receive an array of string and perform a join with commas and concat brackets at the beginning and end.
 
 Equivalent to: `string.Concat('[', string.Join(',', array), ']')`
+
+Example
+Input: ["hello","world"]
+Output: "[hello,world"]"
 
 
 ### Benchmarks
