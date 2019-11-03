@@ -6,9 +6,9 @@ namespace SpansExamples
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            BenchmarkRunner.Run<SumCommaSeparatedValuesBenchmark>();
+         //   BenchmarkRunner.Run<SumCommaSeparatedValuesBenchmark>();
             BenchmarkRunner.Run<StringJoinAndConcatBenchmark>();
         }
     }

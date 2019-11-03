@@ -6,7 +6,7 @@ Allocation free examples for high-performance code.
 ## String parser
 Receive a string of integers separated by commas and sum all of them.
 
-Example:
+Example
 Input: "2,4,5"
 Output: 11
 
@@ -40,23 +40,36 @@ Receive an array of string and perform a join with commas and concat brackets at
 
 Equivalent to: `string.Concat('[', string.Join(',', array), ']')`
 
+Example
+Input: ["hello","world"]
+Output: "[hello,world"]"
+
+
 ### Benchmarks
 
 ```
-|                               Method |         content |         Mean |       Error |      StdDev |  Ratio | RatioSD |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
-|------------------------------------- |---------------- |-------------:|------------:|------------:|-------:|--------:|-------:|-------:|------:|----------:|
-| AllocationFree_JoinAndConcatBrackets | System.String[] |     9.976 ns |   0.2272 ns |   0.5035 ns |   0.22 |    0.02 |      - |      - |     - |         - |
-|   OverheadFree_JoinAndConcatBrackets | System.String[] |    13.775 ns |   0.2705 ns |   0.2530 ns |   0.30 |    0.01 | 0.0068 |      - |     - |      32 B |
-|    Traditional_JoinAndConcatBrackets | System.String[] |    44.908 ns |   0.9200 ns |   1.5116 ns |   1.00 |    0.00 | 0.0272 |      - |     - |     128 B |
-|                                      |                 |              |             |             |        |         |        |        |       |           |
-| AllocationFree_JoinAndConcatBrackets | System.String[] |    46.561 ns |   0.9548 ns |   2.0757 ns |   1.04 |    0.06 |      - |      - |     - |         - |
-|   OverheadFree_JoinAndConcatBrackets | System.String[] |    55.132 ns |   1.1281 ns |   2.5920 ns |   1.24 |    0.09 | 0.0187 |      - |     - |      88 B |
-|    Traditional_JoinAndConcatBrackets | System.String[] |   136.196 ns |   2.1177 ns |   1.9809 ns |   3.00 |    0.12 | 0.0560 |      - |     - |     264 B |
-|                                      |                 |              |             |             |        |         |        |        |       |           |
-| AllocationFree_JoinAndConcatBrackets | System.String[] |   447.116 ns |   8.7690 ns |  11.0900 ns |   9.90 |    0.41 |      - |      - |     - |         - |
-|   OverheadFree_JoinAndConcatBrackets | System.String[] |   489.450 ns |   9.6672 ns |  21.8206 ns |  10.99 |    0.65 | 0.1326 |      - |     - |     624 B |
-|    Traditional_JoinAndConcatBrackets | System.String[] |   840.456 ns |  16.5204 ns |  16.2252 ns |  18.52 |    0.79 | 0.2851 |      - |     - |    1344 B |
-|                                      |                 |              |             |             |        |         |        |        |       |           |
-| AllocationFree_JoinAndConcatBrackets | System.String[] | 4,310.807 ns |  81.9154 ns |  80.4519 ns |  94.97 |    3.95 |      - |      - |     - |         - |
-|   OverheadFree_JoinAndConcatBrackets | System.String[] | 4,946.532 ns |  98.3327 ns | 252.0644 ns | 109.23 |    5.62 | 1.2741 |      - |     - |    6024 B |
-|    Traditional_JoinAndConcatBrackets | System.String[] | 7,844.487 ns | 131.4879 ns | 122.9938 ns | 172.52 |    6.19 | 2.5787 | 0.0153 |     - |   12144 B |
+|                                                     Method |         content |    n |          Mean |        Error |       StdDev |        Median | Ratio | RatioSD |    Gen 0 |    Gen 1 |    Gen 2 | Allocated |
+|----------------------------------------------------------- |---------------- |----- |--------------:|-------------:|-------------:|--------------:|------:|--------:|---------:|---------:|---------:|----------:|
+|                       AllocationFree_JoinAndConcatBrackets | System.String[] |    1 |      46.86 ns |     0.951 ns |     1.665 ns |      45.98 ns |  0.52 |    0.01 |        - |        - |        - |         - |
+|                         OverheadFree_JoinAndConcatBrackets | System.String[] |    1 |      63.65 ns |     1.292 ns |     1.327 ns |      63.45 ns |  0.67 |    0.02 |   0.1632 |        - |        - |     768 B |
+|                          Traditional_JoinAndConcatBrackets | System.String[] |    1 |      94.35 ns |     0.910 ns |     0.851 ns |      94.11 ns |  1.00 |    0.00 |   0.1836 |        - |        - |     864 B |
+| StringBuilder_WithInitialCapacitySet_JoinAndConcatBrackets | System.String[] |    1 |     139.53 ns |     1.670 ns |     1.480 ns |     139.26 ns |  1.48 |    0.02 |   0.3364 |   0.0010 |        - |    1584 B |
+|                        StringBuilder_JoinAndConcatBrackets | System.String[] |    1 |     221.61 ns |     1.510 ns |     1.412 ns |     221.34 ns |  2.35 |    0.03 |   0.5252 |   0.0033 |        - |    2472 B |
+|                                                            |                 |      |               |              |              |               |       |         |          |          |          |           |
+|                       AllocationFree_JoinAndConcatBrackets | System.String[] |   10 |     198.70 ns |     0.625 ns |     0.585 ns |     198.44 ns |  0.16 |    0.00 |        - |        - |        - |         - |
+|                         OverheadFree_JoinAndConcatBrackets | System.String[] |   10 |     617.46 ns |    11.804 ns |    12.630 ns |     618.58 ns |  0.50 |    0.01 |   1.5764 |        - |        - |    7424 B |
+|                          Traditional_JoinAndConcatBrackets | System.String[] |   10 |   1,241.93 ns |     8.232 ns |     7.701 ns |   1,241.73 ns |  1.00 |    0.00 |   3.1738 |        - |        - |   14944 B |
+| StringBuilder_WithInitialCapacitySet_JoinAndConcatBrackets | System.String[] |   10 |   1,281.34 ns |    18.210 ns |    15.206 ns |   1,281.49 ns |  1.03 |    0.01 |   3.1643 |   0.0839 |        - |   14904 B |
+|                        StringBuilder_JoinAndConcatBrackets | System.String[] |   10 |   1,688.54 ns |    28.273 ns |    26.447 ns |   1,681.02 ns |  1.36 |    0.02 |   4.1828 |   0.1812 |        - |   19704 B |
+|                                                            |                 |      |               |              |              |               |       |         |          |          |          |           |
+|                       AllocationFree_JoinAndConcatBrackets | System.String[] |  100 |   2,519.36 ns |    17.756 ns |    15.740 ns |   2,517.83 ns |  0.21 |    0.01 |        - |        - |        - |         - |
+|                         OverheadFree_JoinAndConcatBrackets | System.String[] |  100 |   5,768.20 ns |    68.021 ns |    63.627 ns |   5,764.48 ns |  0.47 |    0.03 |  15.6174 |        - |        - |   74024 B |
+|                          Traditional_JoinAndConcatBrackets | System.String[] |  100 |  11,673.02 ns |   315.953 ns |   593.436 ns |  11,485.74 ns |  1.00 |    0.00 |  31.2347 |        - |        - |  148144 B |
+| StringBuilder_WithInitialCapacitySet_JoinAndConcatBrackets | System.String[] |  100 |  12,610.42 ns |   111.927 ns |   104.696 ns |  12,595.62 ns |  1.03 |    0.06 |  31.2347 |   6.2408 |        - |  148104 B |
+|                        StringBuilder_JoinAndConcatBrackets | System.String[] |  100 |  14,522.56 ns |   250.203 ns |   208.930 ns |  14,591.18 ns |  1.19 |    0.08 |  34.4696 |   8.6060 |        - |  162504 B |
+|                                                            |                 |      |               |              |              |               |       |         |          |          |          |           |
+|                       AllocationFree_JoinAndConcatBrackets | System.String[] | 1000 |  29,771.21 ns |   407.182 ns |   380.879 ns |  29,927.12 ns |  0.12 |    0.01 |        - |        - |        - |         - |
+| StringBuilder_WithInitialCapacitySet_JoinAndConcatBrackets | System.String[] | 1000 | 236,090.88 ns | 4,675.611 ns | 7,140.152 ns | 235,344.82 ns |  0.95 |    0.05 | 257.3242 | 256.8359 | 256.8359 | 1480836 B |
+|                          Traditional_JoinAndConcatBrackets | System.String[] | 1000 | 248,251.62 ns | 4,935.587 ns | 7,828.364 ns | 248,191.50 ns |  1.00 |    0.00 | 240.7227 | 240.2344 | 240.2344 | 1481994 B |
+|                         OverheadFree_JoinAndConcatBrackets | System.String[] | 1000 | 281,314.26 ns | 1,195.323 ns | 1,118.106 ns | 281,088.67 ns |  1.14 |    0.05 | 199.7070 | 199.7070 | 199.7070 |  740025 B |
+|                        StringBuilder_JoinAndConcatBrackets | System.String[] | 1000 | 413,722.76 ns | 3,862.279 ns | 3,225.178 ns | 414,828.96 ns |  1.67 |    0.07 | 199.7070 | 199.7070 | 199.7070 | 1487456 B |

@@ -2,16 +2,16 @@
 
 namespace SpansExamples.StringJoinAndConcat.Benchmarks
 {
-    public readonly struct MeaningfulStructure
+    public struct MeaningfulStructure
     {
-        public readonly string Val1;
-        public readonly string Val2;
-        public readonly string Val3;
-        public readonly string Val4;
-        public readonly string Val5;
-        public readonly string Val6;
-        public readonly string Val7;
-        public readonly string Val8;
+        public string Val1 { get; }
+        public string Val2 { get; }
+        public string Val3 { get; }
+        public string Val4 { get; }
+        public string Val5 { get; }
+        public string Val6 { get; }
+        public string Val7 { get; }
+        public string Val8 { get; }
 
         public MeaningfulStructure(string val1, string val2, string val3, string val4, string val5,
                                    string val6, string val7, string val8)

@@ -32,7 +32,7 @@ namespace SpansExamples.StringJoinAndConcat
       /// </summary>
       /// <param name="array"></param>
       /// <param name="buffer">Operation result</param>
-        public static void JoinAndConcatBrackets(string[] array, ref Span<char> buffer)
+        public static void JoinAndConcatBrackets(string[] array, Span<char> buffer)
         {
             buffer[0] = '[';
             var position = 0;
