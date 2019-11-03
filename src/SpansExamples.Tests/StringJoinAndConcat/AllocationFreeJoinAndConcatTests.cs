@@ -11,7 +11,7 @@ namespace SpansExamples.Tests.StringJoinAndConcat
             var length = AllocationFree.CalculateRequiredLength(array);
             Span<char> buffer = stackalloc char[length];
 
-            AllocationFree.JoinAndConcatBrackets(array, ref buffer);
+            AllocationFree.JoinAndConcatBrackets(array, buffer);
 
             Assert.Equal(expectedResult, buffer.ToString());
         }
